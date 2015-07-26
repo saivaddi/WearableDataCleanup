@@ -60,5 +60,5 @@ run_analysis <- function() {
 
   # Writing the data to a file in comma separated format (csv)
   write.table(tidyData, "tidyData.txt", row.names = FALSE,sep=",")
- 
+
 }
