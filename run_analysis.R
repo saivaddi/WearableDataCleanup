@@ -47,16 +47,17 @@ run_analysis <- function() {
 
   }
 
+  posInds <- which(colInds>0)
   # Giving variable(column) names for the tidyData data frame
   tidyDataNames[1:2] <- c("Subject ID", "Activity")
   for (i in 3:ncol(subData)) {
-    tidyDataNames[i] = paste("Ave(",featnames[colInds[i],2],")")
-  }
+    tidyDataNames[i] = gsub("-|\\()","",featnames[posInds[i-2],2])  
+    }
   
   # Setting the names
   names(tidyData) <- tidyDataNames
   print(head(tidyData))
-  
+
   # Writing the data to a file in comma separated format (csv)
   write.table(tidyData, "tidyData.txt", row.names = FALSE,sep=",")
  
